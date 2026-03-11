@@ -72,14 +72,21 @@
       <div class="contact-form-box">
         <h2>Send a Message</h2>
 
-        <form action="mailto:information@precisionqualitysystems.com" method="post" enctype="text/plain">
-        <form action="mailto:info@precisionqualitysystems.com?subject=Website%20Contact%20Form" method="post" enctype="text/plain">
+                <form action="mailto:information@precisionqualitysystems.com" method="post" enctype="text/plain">
+        <form action="https://formsubmit.co/info@precisionqualitysystems.com" method="post">
+          <input type="hidden" name="_subject" value="Website Contact Form Submission">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none">
+
+          
           <input type="text" name="name" placeholder="Your Name" required>
           <input type="email" name="email" placeholder="Your Email" required>
           <input type="text" name="company" placeholder="Company Name">
           <textarea name="message" placeholder="How can we help?" required></textarea>
           <button type="submit">Send Message</button>
         </form>
+          <p style="margin-top:10px;font-size:0.9rem;opacity:0.85;">If this is your first submission, FormSubmit may send a one-time activation email for this inbox.</p>
       </div>
 
       <div class="contact-info-box">
