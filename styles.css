@@ -1,0 +1,2520 @@
+cat > styles.css << 'EOF'
+* { box-sizing: border-box; }
+
+
+
+
+/* Video background */
+#bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: -1;
+}
+
+/* Header */
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  z-index: 1000;
+  box-shadow: none;
+  border-bottom: none;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 22px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 92px;
+  width: auto;
+  display: block;
+}
+
+.nav-links a {
+  margin-left: 32px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #4B2E83;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.25s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #4DBA87;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover { color: #4DBA87; }
+
+/* ===== ACTIVE NAV LINK ===== */
+.nav-links a[aria-current="page"] {
+  color: #4DBA87; /* brand green */
+}
+
+.nav-links a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #4DBA87;
+}
+
+/* ===== HERO ===== */
+.hero{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 24px 40px;
+}
+
+.hero-card{
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 34px 34px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  text-align: center;
+  color: #fff;
+}
+
+.hero-card h1{
+  margin: 0 0 10px 0;
+  font-size: 52px;
+  letter-spacing: 0.2px;
+}
+
+.hero-card p{
+  margin: 0;
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+.hero-actions{
+  margin-top: 22px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn{
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover{ transform: translateY(-1px); }
+
+.btn.primary{
+  background: #4B2E83;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.btn.primary:hover{
+  background: #3f2571;
+}
+
+.btn.ghost{
+  background: rgba(255,255,255,0.10);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+.btn.ghost:hover{
+  background: rgba(255,255,255,0.16);
+}
+
+/* Hero text */
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 70px 20px;
+  color: #fff;
+}
+
+/* ===== SECTIONS ===== */
+.section{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 24px 70px;
+  color: #fff;
+}
+
+.section-title{
+  text-align: center;
+  margin: 10px 0 18px;
+  font-size: 26px;
+  letter-spacing: 0.2px;
+}
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card{
+  padding: 18px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.20);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+}
+
+.card h3{
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.card p{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+.section-actions{
+  margin-top: 18px;
+  text-align: center;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 980px){
+  .cards{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px){
+  .cards{ grid-template-columns: 1fr; }
+  .hero-card h1{ font-size: 40px; }
+}
+
+/* ===== WHITE CREDIBILITY SECTION ===== */
+
+.credibility {
+  background: #ffffff;
+  padding: 90px 24px;
+}
+
+.credibility-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.credibility h2 {
+  font-size: 32px;
+  margin-bottom: 28px;
+  color: #4B2E83; /* brand purple */
+  line-height: 1.3;
+}
+
+.credibility p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #333333;
+  margin-bottom: 18px;
+}
+
+/* ===== FADE IN ANIMATION ===== */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== FOOTER ===== */
+
+.site-footer {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 40px 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-social {
+  margin-bottom: 16px;
+}
+
+.footer-social a {
+  color: #ffffff;
+  font-size: 30px;
+  margin: 0 14px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-social a:hover {
+  color: #4DBA87;
+  transform: translateY(-2px);
+}
+
+.footer-copy {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ===== SERVICES PAGE ===== */
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 0;
+  color: #ffffff;
+}
+
+.page-hero {
+  text-align: center;
+  padding: 22px 20px 10px;
+}
+
+.page-hero h1 {
+  margin: 0 0 12px;
+  font-size: 44px;
+}
+
+.page-hero p {
+  margin: 0 auto;
+  max-width: 820px;
+  font-size: 17px;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* Services grid */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 20px 0 50px;
+}
+
+.service-card {
+  border-radius: 20px;
+  padding: 22px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.20);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+  color: #ffffff;
+}
+
+.service-card h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.service-card ul {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.7;
+  font-size: 15px;
+  opacity: 0.95;
+}
+
+@media (max-width: 820px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-card li {
+  margin-bottom: 6px;
+}
+.service-card li:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== ABOUT PAGE ===== */
+
+.about {
+  padding-top: 10px;
+}
+
+/* ===== DARK INTRO SECTION ===== */
+
+.about-white{
+  background: rgba(0, 0, 0, 0.75);
+
+  /* remove the header overlap */
+  margin-top: 60px; 
+
+  padding: 20px 24px 20px;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+/* Force readable text inside dark glass box */
+.about-white h1 {
+  /* About section title color */
+  color: #ffffff !important;
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 42px;
+  letter-spacing: -0.02em;
+}
+
+.about-white h2{
+  color: #ffffff;
+}
+
+.about-white h3{
+color: #ffffff;
+}
+  /* Remove the extra space under the last About paragraph */
+.about-white p:last-of-type{
+  margin-bottom: 0 !important;
+
+  color: #ffffff;
+}
+
+/* Force About title color */
+.about-white h1 {
+  color: #ffffff !important;
+  text-align: center;
+}
+
+/* Force ALL text inside the About box to be readable */
+.about-white,
+.about-white *{
+  color: rgba(255,255,255,0.95) !important;
+}
+
+/* Optional: keep your paragraph slightly softer */
+.about-white p{
+  font-size: 20px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.92) !important;
+}
+
+/* Reduce space under the About box */
+.about-white{
+  padding-bottom: 10px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Reduce space before mission section */
+.mission-section{
+  margin-top: 10px !important;   /* try 0px if you want it tighter */
+  padding-top: 35px !important;  /* creates space between line and “OUR MISSION” */
+}
+
+
+
+/* ===== MISSION SECTION ===== */
+
+/* ===== MISSION SECTION – Bold Tech Style ===== */
+
+/* Gradient accent line */
+
+/* Accent line ABOVE the mission */
+
+.mission-section{
+  position: relative;
+}
+
+.mission-section::before{
+  content: "";
+  display: block;
+  width: 160px;
+  height: 4px;
+  margin: 0 auto 25px auto;
+  background: linear-gradient(90deg, #ff4ecb, #a44cff);
+  border-radius: 4px;
+}
+
+
+.mission-section{
+  text-align: center;
+  padding: 120px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.mission-section h2{
+  font-size: 42px;
+  margin-bottom: 35px;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.mission-section p{
+  font-size: 24px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.95);
+  font-weight: 500;
+}
+
+.mission-section h2{
+  margin-top: 0px;
+}
+
+/* Gradient accent line */
+.mission-section::after{
+  content: "";
+  display: block;
+  width: 160px;
+  height: 4px;
+  margin: 25px auto 0 auto;
+  background: linear-gradient(90deg, #ff4ecb, #a44cff);
+  border-radius: 4px;
+}
+
+
+/* Glass founder section */
+.about-glass {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 24px 90px;
+  color: #ffffff;
+}
+
+.about-glass-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 34px 34px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.20);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+}
+
+.about-glass h2 {
+  margin: 0 0 14px;
+  font-size: 30px;
+}
+
+.about-glass p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+.about-glass p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* FORCE titles to blue/green (logo gradient) */
+/* Vibrant logo-matched gradient titles */
+/* Titles: indigo stays visible, then smooth into teal/green */
+
+
+
+.founder-photo{
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  object-fit:cover;
+
+  border:3px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    0 0 25px rgba(0,0,0,0.4),
+    0 0 60px rgba(0,0,0,0.55),
+    0 0 120px rgba(0,0,0,0.7);
+}
+
+
+.founder-photo:hover{
+  transform: scale(1.03);
+
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,0.06),
+    0 0 40px rgba(0,0,0,0.55),
+    0 0 90px rgba(0,0,0,0.75);
+}
+
+/* Founder section wrapper */
+.founder {
+  padding: 120px 20px;
+}
+
+/* Card layout */
+/* Founder card styling */
+.founder-card{
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: center;
+
+  padding: 40px;
+  border-radius: 20px;
+
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow:
+  0 20px 60px rgba(0,0,0,0.45),
+  0 0 40px rgba(123,44,255,0.25),
+  0 0 60px rgba(43,183,168,0.2);
+}
+
+
+/* Animated gradient border */
+
+
+/* STEP 3 — paste this at the bottom */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+
+/* Photo */
+.founder-photo {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 3px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,0.05),
+    0 0 25px rgba(255,62,201,0.35),
+    0 0 45px rgba(123,44,255,0.35);
+}
+
+.founder-photo:hover {
+  transform: scale(1.03);
+  transition: all 0.3s ease;
+}
+
+/* Text */
+.founder-eyebrow{
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: #ff3ec9;
+
+  margin-bottom: 10px;
+}
+
+
+.founder-eyebrow::after{
+  content:"";
+  display:inline-block;
+  width:40px;
+  height:2px;
+  margin-left:10px;
+  background: linear-gradient(90deg,#ff3ec9,#7b2cff);
+  vertical-align: middle;
+}
+
+.founder-title{
+  font-size: 44px;
+  font-weight: 700;
+  margin: 6px 0 8px;
+  letter-spacing: -0.02em;
+}
+
+
+/* Pink → Purple gradient line */
+/* ===== Founder name gradient divider ===== */
+.founder-accent-line{
+  width:160px;
+  height:4px;
+  border-radius:4px;
+
+  margin:16px auto 22px;
+
+  background: linear-gradient(90deg,#ff4ecb,#a44cff);
+}
+
+
+.founder-role {
+  margin: 0 0 14px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.founder-text{
+  font-size:18px;
+  line-height:1.7;
+  margin-bottom:34px;  /* adds space before buttons */
+}
+
+/* Buttons/links */
+.founder-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.founder-btn{
+  padding:12px 20px;
+  border-radius:10px;
+  font-weight:600;
+  color:white;
+  text-decoration:none;
+
+  background: linear-gradient(90deg,#ff3ec9,#7b2cff);
+
+  transition: all .3s ease;
+}
+
+.founder-btn:hover{
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 15px rgba(0,0,0,0.35),
+    0 0 35px rgba(0,0,0,0.55),
+    0 0 70px rgba(0,0,0,0.75);
+}
+
+.founder-btn:hover {
+  transform: translateY(-1px);
+}
+
+.founder-link {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.founder-link:hover{
+  color: #ff3ec9;
+  text-decoration: none;
+}
+
+/* Mobile */
+@media (max-width: 820px) {
+  .founder-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .founder-photo {
+    margin: 0 auto;
+    width: 210px;
+    height: 210px;
+  }
+
+  .founder-accent-line {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .founder-actions {
+    justify-content: center;
+  }
+}
+
+
+.founder-actions{
+  margin-top: 12px;
+}
+
+.glass-card{
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  padding: 32px;
+}
+
+
+.border-anim{
+  position: relative;
+  overflow: hidden;
+}
+
+.border-anim::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: 24px;
+  background: linear-gradient(120deg,#ff3ec9,#7b2cff,#2bb7a8,#2F4FA2,#ff3ec9);
+  background-size: 300% 300%;
+  animation: gradientMove 8s linear infinite;
+  z-index:-1;
+}
+
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section{
+  padding: 90px 0;
+}
+
+.section:last-of-type {
+  padding-bottom: 30px;
+}
+
+
+/* OUTER: Gradient border block */
+/* OUTER: Gradient border block */
+.founder-border{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* INNER: Black glass block */
+/* INNER: Black glass block (container only — NOT a grid) */
+.founder-card{
+  display: block;              /* <-- key fix */
+  padding: 40px;
+  border-radius: 18px;
+
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+
+  position: static;
+  overflow: visible;
+}
+
+
+@media (max-width: 820px){
+  .founder-card{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .founder-photo{
+    margin: 0 auto;
+  }
+}
+
+.founder-media{
+  display:flex;
+  justify-content:center;
+}
+
+.founder-photo{
+  width:260px;
+  height:260px;
+}
+
+.founder-border{
+  transition: all 0.4s ease;
+}
+
+.founder-border:hover{
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.45),
+    0 0 25px rgba(255,62,201,0.35),
+    0 0 40px rgba(123,44,255,0.35);
+}
+
+
+/* Force founder name to NOT be gradient */
+.about-white h2.founder-title{
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+
+/* About page vertical rhythm */
+.about-white{ margin-bottom: 60px !important; }
+.mission-section{ padding: 90px 24px !important; }
+.founder{ padding: 90px 20px !important; }
+.page-divider{ margin: 70px auto 50px auto !important; }
+.site-footer{ margin-top: 0 !important; }
+
+
+
+.founder-link{
+  color: rgba(255,255,255,0.85);
+  text-decoration:none;
+  font-weight:600;
+  transition: all .25s ease;
+}
+
+
+/* Read more link hover color (force override) */
+.about-white a.founder-link{
+  color: rgba(255,255,255,0.85) !important;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color .25s ease, transform .25s ease;
+}
+
+.about-white a.founder-link:hover{
+  color: #111111 !important;
+  transform: translateX(4px);
+  text-decoration: none;
+}
+
+.founder-border{
+  box-shadow:
+    0 0 25px rgba(255,62,201,0.35),
+    0 0 40px rgba(123,44,255,0.35);
+}
+
+/* Disable the old gradient border that was on the card */
+.founder-card::before{
+  content: none !important;
+}
+
+
+/* ===== FOUNDER GRADIENT FRAME (single source of truth) ===== */
+
+
+.founder-border:hover{
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.45),
+    0 0 25px rgba(255,62,201,0.35),
+    0 0 40px rgba(123,44,255,0.35);
+}
+
+/* Make sure the gradient animation exists */
+@keyframes gradientMove{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+/* Default black-glass for any about-white blocks */
+.about-white{
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+}
+
+/* Founder ONLY (ID beats everything else) */
+#founder-block{
+  background: linear-gradient(135deg,#2F4FA2 0%,#1f7fa8 35%,#2bb7a8 65%,#6ed36b 100%) !important;
+  color: #fff !important;
+}
+
+
+
+
+
+/* =========================
+   FOUNDER CARD (ONLY)
+   ========================= */
+#founder-card.founder-page-card{
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.20);
+}
+
+#founder-card.founder-page-card::before{
+  content: "";
+  position: absolute;
+  inset: -35%;
+  z-index: 0;
+  background-image: linear-gradient(
+    120deg,
+    #ff3ec9 0%,
+    #7b2cff 22%,
+    #2bb7a8 52%,
+    #2F4FA2 78%,
+    #ff3ec9 100%
+  );
+  background-size: 400% 400%;
+  animation: founderGlowMove 10s linear infinite;
+  transform: translateZ(0);
+  will-change: background-position;
+}
+
+
+
+#founder-card.founder-page-card .founder-page-grid{
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 60px;
+  align-items: start;
+  padding: 60px;
+}
+
+.founder-page-image-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 50%;
+}
+
+.founder-page-image{
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.founder-page-image-wrap:hover .founder-page-image{
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 18px rgba(0,0,0,0.85))
+          drop-shadow(0 0 38px rgba(0,0,0,0.65))
+          drop-shadow(0 0 62px rgba(0,0,0,0.45));
+}
+
+.founder-page-content{
+  min-width: 0;
+  width: 100%;
+}
+
+.founder-page-content h2{
+  font-size: 34px;
+  margin: 0 0 10px;
+  color: #ffffff;
+}
+
+.founder-page-subtitle{
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.founder-page-content p{
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 900px){
+  #founder-card.founder-page-card .founder-page-grid{
+    grid-template-columns: 360px minmax(0, 1fr);
+    padding: 32px 24px;
+  }
+
+  .founder-page-image-wrap{
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@keyframes founderGlowMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#founder-card.founder-page-card > *{
+  position: relative;
+  z-index: 1;
+}
+
+
+/* If an inner wrapper is painting over the gradient */
+#founder-card .about-white-inner{
+  background: transparent !important;
+}
+
+/* Fix the “text is black on dark bg” problem */
+#founder-card,
+#founder-card h1,
+#founder-card h2,
+#founder-card h3,
+#founder-card p,
+#founder-card li{
+  color: #ffffff !important;
+}
+
+/* Make body text slightly softer (still readable) */
+#founder-card p,
+#founder-card li{
+  color: rgba(255,255,255,0.88) !important;
+}
+
+/* If your links/buttons are getting forced dark */
+#founder-card a{
+  color: rgba(255,255,255,0.92) !important;
+}
+
+
+/* Founder layout (ONLY this section) */
+#founder-card .about-white-inner{
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 48px;
+  align-items: start;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px;
+  box-sizing: border-box;
+}
+
+/* Mobile stack */
+@media (max-width: 900px){
+  #founder-card .about-white-inner{
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 34px;
+  }
+}
+
+
+/* Founder section: make the inner about-white behave like a full-width card */
+.founder-card > #founder-card.about-white{
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;              /* let .about-white-inner handle padding */
+  background: transparent !important; /* keep gradient handled elsewhere if desired */
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+
+/* Gradient panel for founder layout */
+#founder-card .about-white-inner{
+  background: linear-gradient(135deg,#2F4FA2 0%,#1f7fa8 35%,#2bb7a8 65%,#6ed36b 100%) !important;
+  border-radius: 20px;
+}
+
+
+
+
+.content h1 { margin: 0 0 12px 0; font-size: 48px; }
+.content p { margin: 0; font-size: 18px; opacity: 0.95; }
+EOF
+
+
+/* ==================================================
+   FINAL OVERRIDE: FOUNDER = ONE rounded gradient card
+   ================================================== */
+
+/* Remove the animated frame & any extra container styling around founder */
+.founder-border{
+  background: none !important;
+  padding: 0 !important;
+  animation: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove the inner black-glass wrapper behind the gradient */
+.founder-card{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Make the gradient card itself the ONLY visible card */
+#founder-card .about-white-inner{
+  background: linear-gradient(135deg,
+    #2F4FA2 0%,
+    #1f7fa8 35%,
+    #2bb7a8 65%,
+    #6ed36b 100%
+  ) !important;
+
+  border-radius: 22px !important;   /* rounded corners */
+  overflow: hidden !important;       /* IMPORTANT: clips corners */
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35) !important;
+
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px !important;
+
+  display: grid !important;
+  grid-template-columns: 320px 1fr !important;
+  gap: 50px !important;
+  align-items: start !important;
+}
+
+/* Keep photo nicely centered in its column */
+#founder-card .founder-media{
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* Force readable text */
+#founder-card,
+#founder-card *{
+  color: rgba(255,255,255,0.92) !important;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  #founder-card .about-white-inner{
+    grid-template-columns: 1fr !important;
+    padding: 34px !important;
+    gap: 28px !important;
+  }
+}
+
+
+/* ==================================================
+   FOUNDER CARD: animated multi-color gradient
+   ================================================== */
+
+/* If gradientMove already exists, you can keep it.
+   This is safe even if it duplicates—last one wins. */
+@keyframes founderGradientMove{
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==================================================
+   HARD OVERRIDE: moving multi-color gradient (Founder)
+   ================================================== */
+
+@keyframes founderGradientMove {
+  0%   { background-position:   0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position:   0% 50%; }
+}
+
+/* ==================================================
+   FOUNDER: guaranteed moving multi-color gradient
+   (uses a pseudo-element layer behind the content)
+   ================================================== */
+
+@keyframes founderGlowMove{
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Make the founder card the clipping container */
+#founder-card .about-white-inner{
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 22px !important;
+
+  /* remove any static background fighting us */
+  background: transparent !important;
+}
+
+
+/* The moving gradient layer */
+#founder-card .about-white-inner::before{
+  content: "" !important;
+  position: absolute !important;
+  inset: -35% !important;              /* oversized so movement doesn’t show edges */
+  z-index: 0 !important;
+
+  background-image: linear-gradient(
+    120deg,
+    #ff3ec9 0%,
+    #7b2cff 22%,
+    #2bb7a8 52%,
+    #2F4FA2 78%,
+    #ff3ec9 100%
+  ) !important;
+
+  background-size: 400% 400% !important;
+  animation: founderGlowMove 10s linear infinite !important;
+
+  transform: translateZ(0) !important;
+  will-change: background-position !important;
+}
+
+/* Keep all your text/photo ABOVE the moving layer */
+#founder-card .about-white-inner > *{
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+animation: founderGlowMove 14s ease-in-out infinite;
+
+
+/* Vibrant PQS indigo title gradient */
+/* ===== PRECISION logo-style title gradient ===== */
+
+.about-white h1,
+.about-white h2,
+.about-white h3,
+.mission-section h2{
+
+  background: linear-gradient(
+    90deg,
+    #2b2c8f 0%,
+    #3b36a6 35%,
+    #5c46b5 50%,
+    #3b36a6 65%,
+    #2b2c8f 100%
+  ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+
+   /* Safari sharpening */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* FOUNDER PAGE */
+/* ===== FOUNDER PAGE ===== */
+
+/* ===== FOUNDER PAGE ===== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+}
+
+.background-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.site-header,
+.founder-page-hero,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.founder-page-hero {
+  min-height: 100vh;
+  padding: 80px 24px;
+  background: transparent !important;
+}
+
+.founder-page-overlay {
+  width: 100%;
+  background: transparent !important;
+}
+
+.founder-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.founder-breadcrumb {
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.founder-breadcrumb a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.founder-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.founder-page-title {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #2F4FA2 0%, #1f7fa8 35%, #2bb7a8 70%, #6ed36b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+
+@keyframes founderGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.founder-page-card,
+.founder-page-card::before,
+.founder-page-card::after{
+  border-radius: 28px !important;
+}
+
+.founder-page-card{
+  overflow: hidden !important;
+}
+
+.founder-page-grid{
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.founder-page-image-wrap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.founder-page-image{
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.founder-page-image-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.founder-page-image {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.founder-page-content h2 {
+  font-size: 34px;
+  margin: 0 0 10px;
+  color: #ffffff;
+}
+
+.founder-page-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f7fa8;
+  margin-bottom: 24px;
+}
+
+.founder-page-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.founder-page-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+  .founder-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-page-image-wrap {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+.founder-page-title{
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+  .founder-page-card {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .founder-page-title {
+    font-size: 30px;
+  }
+
+  .founder-page-content h2{
+  font-size: 34px;
+  margin: 0 0 10px;
+  color: #ffffff;
+}
+}
+
+
+.founder-page-subtitle{
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.founder-page-content p{
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.founder-page-card{
+  background: linear-gradient(135deg, rgba(111,27,61,0.92), rgba(201,74,166,0.92));
+}
+
+.founder-page-buttons{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.founder-page-buttons a{
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary{
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(
+    120deg,
+    #ff3ec9 0%,
+    #b636ff 45%,
+    #7b2cff 100%
+  );
+  background-size: 200% 200%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-primary:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+.founder-page-buttons .btn-outline{
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background: transparent;
+}
+
+.founder-page-buttons .btn-outline:hover{
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+.founder-page-image{
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.founder-page-image:hover{
+  box-shadow:
+    0 0 0 8px rgba(0,0,0,0.35),
+    0 0 40px rgba(0,0,0,0.7),
+    0 0 80px rgba(0,0,0,0.45);
+  transform: scale(1.04);
+}
+
+
+/* ===== FOUNDER PAGE: WORK WITH ME gradient button ===== */
+/* ===== FOUNDER PAGE: WORK WITH ME button ===== */
+.founder-page-buttons a,
+.founder-page-buttons .btn-primary,
+.founder-btn{
+  display: inline-block !important;
+  padding: 12px 24px !important;
+  border-radius: 999px !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: none !important;
+
+  background: linear-gradient(
+    120deg,
+    #ff3ec9 0%,
+    #b636ff 45%,
+    #7b2cff 100%
+  ) !important;
+
+  background-size: 200% 200% !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.founder-page-buttons a:hover,
+.founder-page-buttons .btn-primary:hover,
+.founder-btn:hover{
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35) !important;
+  text-decoration: none !important;
+}
+
+
+/* ===== WORK WITH ME button black glow hover ===== */
+
+/* ===== WORK WITH ME: match founder image hover ===== */
+
+/* ===== WORK WITH ME: hard override to match image hover ===== */
+/* WORK WITH ME — identical glow method as founder image */
+
+.founder-page-buttons a{
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.founder-page-buttons a:hover{
+  transform: scale(1.04);
+
+  filter:
+    drop-shadow(0 0 18px rgba(0,0,0,0.85))
+    drop-shadow(0 0 38px rgba(0,0,0,0.65))
+    drop-shadow(0 0 62px rgba(0,0,0,0.45));
+}
+
+
+/* ===== FINAL FOOTER FIX: match all other pages ===== */
+.site-footer{
+  position: relative !important;
+  z-index: 1 !important;
+
+  background: rgba(0, 0, 0, 0.85) !important;
+  padding: 40px 20px !important;
+  margin-top: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  text-align: center !important;
+  color: #ffffff !important;
+}
+
+.footer-inner{
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+}
+
+.footer-social{
+  margin-bottom: 16px !important;
+}
+
+.footer-social a{
+  color: #ffffff !important;
+  font-size: 30px !important;
+  margin: 0 14px !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
+}
+
+.footer-social a:hover{
+  color: #4DBA87 !important;
+  transform: translateY(-2px) !important;
+}
+
+.footer-copy{
+  font-size: 14px !important;
+  opacity: 0.8 !important;
+  color: #ffffff !important;
+}
+
+/* Remove weird founder-page spacing above footer */
+.founder-page-hero{
+  min-height: auto !important;
+  padding-bottom: 60px !important;
+}
+
+.site-footer{
+  clear: both !important;
+}
+
+
+/* ===== ABOUT PAGE FOOTER SPACING FIX ===== */
+
+/* ===== ABOUT/ALL PAGES FOOTER MATCH FIX ===== */
+.site-footer{
+  background: rgba(0, 0, 0, 0.85) !important;
+  padding: 40px 20px !important;
+  margin-top: 0 !important;
+  text-align: center !important;
+  color: #ffffff !important;
+}
+
+.footer-inner{
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+}
+
+.footer-social{
+  margin: 0 0 16px 0 !important;
+}
+
+.footer-social a{
+  color: #ffffff !important;
+  font-size: 30px !important;
+  margin: 0 14px !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
+}
+
+.footer-social a:hover{
+  color: #4DBA87 !important;
+  transform: translateY(-2px) !important;
+}
+
+.footer-copy{
+  margin: 0 !important;
+  font-size: 14px !important;
+  opacity: 0.8 !important;
+  color: #ffffff !important;
+}
+
+
+/* ===== REMOVE SPACE ABOVE FOOTER (ALL PAGES SAFE) ===== */
+
+/* =========================================
+   GLOBAL FOOTER — USE ON ALL PAGES
+   ========================================= */
+
+.site-footer{
+  position: relative;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 32px 20px;
+  margin-top: 0 !important;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+  color: #ffffff;
+}
+
+.footer-inner{
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-social{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin: 0 0 14px 0;
+  padding: 0;
+}
+
+.footer-social a{
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-social a:hover{
+  color: #4DBA87;
+  transform: translateY(-2px);
+}
+
+.footer-copy{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.8;
+  color: #ffffff;
+}
+
+
+/* ===== ABOUT PAGE: remove extra space before footer ===== */
+
+.about .founder{
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.about .site-footer{
+  margin-top: 0 !important;
+}
+
+
+/* ===== FOUNDER PAGE: bar under Samantha Dolin ===== */
+.founder-page-name-bar{
+  display: block;
+  width: 160px;
+  height: 4px;
+  margin: 16px 0 22px 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff3ec9, #7b2cff);
+}
+
+/* Restore About page founder bar alignment */
+.about .founder-accent-line{
+  margin: 14px 0 18px 0 !important;
+  width: 90px !important;
+}
+
+/* ===== FOUNDER PAGE: make Samantha Dolin black ===== */
+#founder-card .founder-page-content h2{
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+}
+
+/* Center only the bold intro line */
+.credibility p strong{
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+/* ===== HOME PAGE WHITE BLOCK TEXT ALIGNMENT ===== */
+
+.credibility-inner{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.credibility h2{
+  text-align: center !important;
+}
+
+.credibility p{
+  text-align: left !important;
+}
+
+
+
+.contact-hero{
+text-align:center;
+padding:100px 20px 40px;
+color:white;
+}
+
+.contact-hero h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.contact-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+max-width:1100px;
+margin:auto;
+padding:60px 20px;
+}
+
+.contact-form{
+background:white;
+padding:40px;
+border-radius:10px;
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:14px;
+margin-bottom:16px;
+border:1px solid #ddd;
+border-radius:6px;
+font-size:16px;
+}
+
+.contact-form button{
+padding:14px 28px;
+border:none;
+border-radius:6px;
+background:linear-gradient(
+120deg,
+#ff3ec9,
+#7b2cff
+);
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.contact-info{
+color:white;
+font-size:18px;
+}
+
+.contact-info a{
+color:#2bb7a8;
+text-decoration:none;
+}
+
+.contact-info p{
+margin-bottom:18px;
+}
+
+
+.video-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+.contact-hero{
+  position: relative;
+  z-index: 1;
+  padding: 110px 24px 50px;
+  text-align: center;
+}
+
+.contact-hero-inner{
+  max-width: 900px;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+.contact-hero h1{
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+
+.contact-hero p{
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 760px;
+  margin: 0 auto;
+  color: rgba(255,255,255,0.92);
+}
+
+.contact-section{
+  position: relative;
+  z-index: 1;
+  padding: 20px 24px 90px;
+}
+
+.contact-grid{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.contact-form-box{
+  background: rgba(255,255,255,0.94);
+  border-radius: 24px;
+  padding: 38px 34px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+}
+
+.contact-info-box{
+  background: rgba(0,0,0,0.55);
+  border-radius: 24px;
+  padding: 38px 34px;
+  color: #ffffff;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+}
+
+.contact-form-box h2,
+.contact-info-box h2{
+  margin-bottom: 22px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.contact-form-box input,
+.contact-form-box textarea{
+  width: 100%;
+  border: 1px solid rgba(47,79,162,0.16);
+  border-radius: 14px;
+  padding: 15px 16px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.contact-form-box textarea{
+  min-height: 170px;
+  resize: vertical;
+}
+
+.contact-form-box button{
+  display: inline-block;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff3ec9 0%, #7b2cff 45%, #2F4FA2 100%);
+}
+
+.contact-info-box p{
+  margin-bottom: 22px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.92);
+}
+
+.contact-info-box a{
+  color: #6ed36b;
+  text-decoration: none;
+}
+
+.contact-info-box a:hover{
+  color: #2bb7a8;
+}
+
+@media (max-width: 900px){
+  .contact-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .contact-hero h1{
+    font-size: 38px;
+  }
+}
+
+
+/*
+  Shared CTA button styles
+  - Align home page hero CTAs with the Contact page "Send Message" gradient.
+*/
+
+.hero-actions .btn,
+.hero-actions .btn.primary,
+.hero-actions .btn.ghost {
+  display: inline-block;
+  padding: 14px 26px;
+  border: none;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff3ec9 0%, #7b2cff 45%, #2F4FA2 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-actions .btn:hover,
+.hero-actions .btn.primary:hover,
+.hero-actions .btn.ghost:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+
+/*
+  Home page "Explore All Services" CTA
+  - Matches the exact gradient styling used by other primary CTAs.
+*/
+.section-actions .btn,
+.section-actions .btn.primary,
+.section-actions .btn.ghost {
+  display: inline-block;
+  padding: 14px 26px;
+  border: none;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff3ec9 0%, #7b2cff 45%, #2F4FA2 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.section-actions .btn:hover,
+.section-actions .btn.primary:hover,
+.section-actions .btn.ghost:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+
+/*
+  Home page spacing fix
+  - Ensures the gap between the hero glass block (PQS) and
+    the following "What We Do" content is visibly reduced.
+*/
+
+/* Tighten space directly under the hero wrapper */
+.hero {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Remove any extra gap under the glass card itself */
+.hero-card {
+  margin-bottom: 0 !important;
+}
+
+/* Pull the next content block up */
+.content {
+  padding-top: 30px !important;
+  margin-top: 0 !important;
+}
+
+/* If "What We Do" is rendered as a section block, tighten that too */
+.section {
+  padding-top: 70px !important;
+}
+
+.section-title {
+  margin-top: 0 !important;
+}
+
+/* Mobile spacing keeps the same tighter rhythm */
+@media (max-width: 560px) {
+  .content,
+  .section {
+    padding-top: 14px !important;
+  }
+}
+
+
+/*
+  About page spacing micro-adjustment
+  - Slightly reduce the gap between the first intro paragraph block
+    and the pink/purple mission divider line.
+*/
+.about .about-white {
+  margin-bottom: 30px !important;
+}
+
+.about .mission-section {
+  padding-top: 55px !important;
+}
+
+
+/*
+  About founder block hover polish
+  - Match "Work with me" hover glow to founder image black glow style.
+  - Make "Read more" hover change to pink.
+*/
+.about .founder-page-buttons a,
+.about .founder-btn {
+  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease !important;
+}
+
+.about .founder-page-buttons a:hover,
+.about .founder-btn:hover {
+  transform: scale(1.04) !important;
+  filter:
+    drop-shadow(0 0 18px rgba(0,0,0,0.85))
+    drop-shadow(0 0 38px rgba(0,0,0,0.65))
+    drop-shadow(0 0 62px rgba(0,0,0,0.45)) !important;
+  box-shadow: none !important;
+}
+
+.about a.founder-link:hover,
+.about .founder-link:hover {
+  color: #ff3ec9 !important;
+  text-decoration: none !important;
+}
+
+
+/*
+  About founder follow-up fixes
+  - Force Read more hover to pink even when text-fill/gradient rules are present.
+  - Add ~2 line spaces between founder paragraph and CTA buttons.
+*/
+.about .founder-link,
+.about a.founder-link {
+  display: inline-block;
+}
+
+.about .founder-link:hover,
+.about a.founder-link:hover,
+.about .founder-text + .founder-actions .founder-link:hover,
+.about .founder-page-content .founder-link:hover {
+  color: #ff3ec9 !important;
+  -webkit-text-fill-color: #ff3ec9 !important;
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  text-decoration: none !important;
+}
+
+.about .founder-actions,
+.about .founder-page-buttons {
+  margin-top: 32px !important;
+}
+
+/*
+  Contact page CTA hover polish
+  - Apply the same black glow hover treatment as founder button/image.
+*/
+.contact-form-box button {
+  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease !important;
+}
+
+.contact-form-box button:hover {
+  transform: scale(1.04) !important;
+  filter:
+    drop-shadow(0 0 18px rgba(0,0,0,0.85))
+    drop-shadow(0 0 38px rgba(0,0,0,0.65))
+    drop-shadow(0 0 62px rgba(0,0,0,0.45)) !important;
+  box-shadow: none !important;
+}
+
+/*
+  Contact form heading spacing tweak
+  - Reduce space between top of form block and "Send a Message" by about one line.
+*/
+.contact-form-box h2 {
+  margin-top: 0 !important;
+}
+
+/*
+  Home page gradient button hover polish
+  - Apply a white glow hover treatment on home gradient CTAs.
+*/
+.hero-actions .btn,
+.section-actions .btn {
+  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease !important;
+}
+
+.hero-actions .btn:hover,
+.section-actions .btn:hover {
+  transform: scale(1.04) !important;
+  filter:
+    drop-shadow(0 0 10px rgba(255,255,255,0.85))
+    drop-shadow(0 0 22px rgba(255,255,255,0.65))
+    drop-shadow(0 0 36px rgba(255,255,255,0.45)) !important;
+  box-shadow: none !important;
+}
+
+
+/* center buttons on home page */
+
+.cards .section-actions {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.cards .section-actions .btn[href*="services"] {
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+
+/*
+  Home page services CTA centering fix
+  - In provided HTML, .section-actions is nested inside .cards (grid).
+  - Span full grid width and center only this action row.
+*/
+.cards .section-actions {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.cards .section-actions .btn[href*="services"] {
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+/* Home page card title polish */
+.cards .card h3 {
+  text-align: center;
+  font-size: 22px;
+}
+
+/* Home page card title polish */
+.cards .card h3 {
+  text-align: center;
+  font-size: 20px;
+}
+
+/* Home section title size tweak */
+.section > .section-title {
+  font-size: 36px;
+}
+
+
+/* Home white block heading hover */
+.credibility h2 {
+  transition: color 0.25s ease;
+}
+
+.credibility h2:hover {
+  color: #4DBA87;
+}
+
+
+/* Home approach cards: center full box content + slightly larger body text */
+.cards .card {
+  text-align: center;
+}
+
+.cards .card p {
+  font-size: 16px;
+}
+
+
+/* Services page: softer black-glass cards (about-style, but lighter) */
+.service-card {
+  background: rgba(0, 0, 0, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.30);
+}
+
+
+/* Services page: gradient accent line under each card title */
+.service-card h2 {
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.service-card h2::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff3ec9, #7b2cff);
+}
+
+
+/* Services page title accent line */
+.page-hero h1 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 14px;
+}
+
+.page-hero h1::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff3ec9, #7b2cff);
+}
+
+
+/* Home hero title accent line */
+.hero-card h1 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+.hero-card h1::after {
+  content: "";
+  display: block;
+  width: 160px;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff3ec9, #7b2cff);
+}
+
+
+/* Global typography: Montserrat site-wide */
+html, body {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.nav-links a,
+.btn,
+.founder-btn,
+.founder-link {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+
+/* Services page bottom CTA: Schedule a FREE Consultation */
+.services-cta {
+  text-align: center;
+  margin: 16px auto 56px;
+}
+
+.services-cta .btn,
+.services-cta .btn.primary,
+.services-cta .btn.ghost {
+  display: inline-block;
+  padding: 14px 26px;
+  border: none;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff3ec9 0%, #7b2cff 45%, #2F4FA2 100%);
+  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+}
+
+.services-cta .btn:hover,
+.services-cta .btn.primary:hover,
+.services-cta .btn.ghost:hover {
+  transform: scale(1.04);
+  filter:
+    drop-shadow(0 0 10px rgba(255,255,255,0.85))
+    drop-shadow(0 0 22px rgba(255,255,255,0.65))
+    drop-shadow(0 0 36px rgba(255,255,255,0.45));
+  box-shadow: none;
+}
+
+
+/* Home hero CTA simplification: hide View Services and center consultation button */
+.hero-actions {
+  justify-content: center;
+}
+
+.hero-actions a[href*="services"] {
+  display: none !important;
+}
+
+
+/* Home page spacing tune: more room above Explore button, less room before white block */
+main.hero + .section .section-actions {
+  margin-top: 18px !important;
+  margin-bottom: 0 !important;
+}
+
+main.hero + .section {
+  padding-bottom: 32px !important;
+}
+
+
+.logo-link{
+  display: inline-block;
+  text-decoration: none;
+}
+
+
+.logo-link{
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header .header-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

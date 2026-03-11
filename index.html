@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Precision Quality Systems</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-container">
+    <a href="index.html" class="logo-link">
+  <img src="logo.png" alt="Precision Quality Systems" class="logo">
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="video/background.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+
+<main class="hero">
+  <div class="hero-card">
+    <h1>Precision Quality Systems</h1>
+    <p>At Precision Quality Systems, we take a structured, data-driven approach to improving quality and operational performance. Our process focuses on understanding your operations, implementing practical solutions, and delivering measurable results.</p>
+
+    <div class="hero-actions">
+      <a class="btn primary" href="contact.html">Schedule a FREE Consultation</a>
+      <a class="btn ghost" href="services.html">View Services</a>
+    </div>
+  </div>
+</main>
+<section class="section">
+  <h2 class="section-title">Our Approach</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Assess</h3>
+      <p>We evaluate your current systems, processes, and performance data to identify inefficiencies, risks, and opportunities for improvement in order to increase profit.</p>
+      </div>
+
+    <div class="card">
+      <h3>Design</h3>
+      <p>Based on our findings, we develop structured, data-driven solutions tailored to your organization’s operations and long-term goals.</p>
+    </div>
+
+    <div class="card">
+      <h3>Implement</h3>
+      <p>We implement operational improvements and digitized quality systems that enhance efficiency, strengthen data visibility, and integrate seamlessly into your daily operations.</p>
+    </div>
+
+    <div class="card">
+      <h3>Optimize</h3>
+      <p>We monitor performance, refine systems, and support continuous improvement to ensure long-term operational success that will sustain long after we're gone.</p>
+  </div>
+
+  
+  <div class="section-actions">
+    <a class="btn ghost" href="services.html">Explore All Services</a>
+  </div>
+</section>
+
+
+
+
+<section class="credibility">
+  <div class="credibility-inner">
+    <h2>Every business operates differently — and your solutions should too.</h2>
+
+    <p>
+      At Precision Quality Systems, we deliver customized, data-driven consulting designed around your operations, goals, and real-world challenges. Through digitization, structured process improvement, and strategic implementation, we enhance quality systems and operational performance.
+    </p>
+
+    <p>
+      Our focus is measurable impact — strengthening compliance, reducing inefficiencies, improving performance, and driving sustainable profitability.
+    </p>
+
+    <p>
+      We don’t just implement improvements. We build structured systems and internal capability that continue performing long after our engagement ends — empowering your organization to operate confidently and independently.
+    </p>
+  </div>
+</section>
+
+
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll(".fade-in").forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-social">
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <p class="footer-copy">&copy; 2026 Precision Quality Systems. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
